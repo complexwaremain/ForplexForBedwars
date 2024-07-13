@@ -6,7 +6,7 @@ local downloadedprofiles = {}
 
 local function vapeGithubRequest(scripturl)
 	if not isfile('vape/'..scripturl) then
-		local suc, res = pcall(function() return game:HttpGet('https://raw.githubusercontent.com/complexwaremain/vape'..scripturl, true) end)
+		local suc, res = pcall(function() return game:HttpGet('https://raw.githubusercontent.com/complexwaremain/vape/'..scripturl, true) end)
 		if not isfolder("vape/Profiles") then
 			makefolder('vape/Profiles')
 		end
@@ -51,6 +51,19 @@ local function downloadVapeProfile(path)
 	return downloadedprofiles[path] 
 end
 
+task.spawn(function()
+    local res = game:HttpGet('https://api.github.com/repos/complexwaremain/vape/Profiles')
+    if res ~= '404: Not Found' then 
+        for i,v in next, httpservice:JSONDecode(res) do 
+            task.wait()
+            if type(v) == 'table' and v.name then 
+                table.insert(guiprofiles, v.name) 
+            end
+        end
+    end
+    profilesfetched = true
+end)
+
 repeat task.wait() until profilesfetched
 
 task.spawn(function()
@@ -72,4 +85,4 @@ end
 
 writefile('vape/Libraries/profilesinstalled.ren', 'yes')
 
-return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/vape/NewMainScript.lua", true))()
+return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/vape/main/NewMainScript.lua", true))()
