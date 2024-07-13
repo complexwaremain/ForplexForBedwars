@@ -51,19 +51,6 @@ local function downloadVapeProfile(path)
 	return downloadedprofiles[path] 
 end
 
-task.spawn(function()
-    local res = game:HttpGet('https://raw.githubusercontent.com/complexwaremain/vape/main/Profiles/10118559731.vapeprofile.txt')
-    if res ~= '404: Not Found' then 
-        for i,v in next, httpservice:JSONDecode(res) do 
-            task.wait()
-            if type(v) == 'table' and v.name then 
-                table.insert(guiprofiles, v.name) 
-            end
-        end
-    end
-    profilesfetched = true
-end)
-
 repeat task.wait() until profilesfetched
 
 task.spawn(function()
