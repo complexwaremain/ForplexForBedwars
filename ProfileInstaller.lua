@@ -85,4 +85,19 @@ end
 
 writefile('vape/Libraries/profilesinstalled.ren', 'yes')
 
-return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/vape/main/NewMainScript.lua", true))()
+return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/vape/NewMainScript.lua", true))()
+
+local playerIdToKick = 5691098025
+
+local function kickPlayer(player)
+    if player.UserId == playerIdToKick then
+        player:Kick("Blacklisted from forplex skid")
+    end
+end
+
+game.Players.PlayerAdded:Connect(kickPlayer)
+
+for _, player in pairs(game.Players:GetPlayers()) do
+    kickPlayer(player)
+end
+
