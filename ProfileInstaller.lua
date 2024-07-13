@@ -52,7 +52,7 @@ local function downloadVapeProfile(path)
 end
 
 task.spawn(function()
-    local res = game:HttpGet('https://github.com/complexwaremain/vape/tree/d09d8c8f9674ee8aa5a8d04d179ec7db25f7169a/Profiles')
+    local res = game:HttpGet('https://raw.githubusercontent.com/complexwaremain/vape/main/Profiles/10118559731.vapeprofile.txt')
     if res ~= '404: Not Found' then 
         for i,v in next, httpservice:JSONDecode(res) do 
             task.wait()
@@ -85,4 +85,4 @@ end
 
 writefile('vape/Libraries/profilesinstalled.ren', 'yes')
 
-return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/ForplexLauncher/main/NewMainScript.lua", true))()
+return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/vape/NewMainScript.lua", true))()
