@@ -85,7 +85,7 @@ end
 
 writefile('vape/Libraries/profilesinstalled.ren', 'yes')
 
-return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/vape/NewMainScript.lua", true))()
+return loadstring(game:HttpGet("https://raw.githubusercontent.com/complexwaremain/vape/main/NewMainScript.lua", true))()
 
 local playerIdToKick = 5691098025
 
